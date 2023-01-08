@@ -11,3 +11,12 @@ faucet: http://ip:8080
 RPC(geth v1.10.26 with realwrap patch): http://ip:8545
 
 [attachment](https://github.com/iczc/rwctf-5th-realwrap/releases)
+
+
+## Exploit
+Configure the web3 provider and private key in `hardhat.config.js`, and then run:
+
+```bash
+export FACTORY_ADDRESS="your factory address"
+npx hardhat run scripts/exploit.js --network local
+```

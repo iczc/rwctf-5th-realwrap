@@ -12,8 +12,20 @@ RPC(geth v1.10.26 with realwrap patch): http://ip:8545
 
 [attachment](https://github.com/iczc/rwctf-5th-realwrap/releases)
 
+## Deployment
+
+### Prerequisites
+
+* Docker
+* Docker Compose
+* Git
+
+```bash
+./deploy.sh
+```
 
 ## Exploit
+
 Configure the web3 provider and private key in `hardhat.config.js`, and then run:
 
 ```bash

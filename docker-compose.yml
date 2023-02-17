@@ -1,0 +1,34 @@
+version: "3.3"
+services:
+  geth:
+    image: realwrap_geth
+    container_name: ethereum
+    restart: unless-stopped
+    entrypoint:
+      - /bin/sh
+      - -c
+      - "/entrypoint.sh"
+    ports:
+      - "8545:8545"
+    volumes:
+      - ./chaindata:/chaindata
+      - ./genesis.json:/genesis.json
+      - ./geth_entrypoint.sh:/entrypoint.sh
+
+  faucet:
+    image: chainflag/eth-faucet:1.1.0
+    container_name: ethfaucet
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    links:
+      - geth
+    volumes:
+      - ./chaindata/keystore:/app/keystore
+      - ./chaindata/password.txt:/app/password.txt
+    command: -wallet.provider http://geth:8545 -wallet.keyjson /app/keystore -wallet.keypass /app/password.txt -faucet.amount 2
+    depends_on:
+      - geth
+
+networks:
+  default:

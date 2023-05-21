@@ -30,5 +30,23 @@ services:
     depends_on:
       - geth
 
+  challenge:
+    image: chainflag/solidctf:1.0.0
+    container_name: realwrap
+    restart: unless-stopped
+    ports:
+      - "20000:20000"
+    links:
+      - geth
+    environment:
+      - WEB3_PROVIDER_URI=http://geth:8545
+    volumes:
+      - ./flag.txt:/ctf/flag.txt
+      - ./contracts:/ctf/contracts
+      - ./challenge.yml:/ctf/challenge.yml
+      - ./brownie-config.yaml:/ctf/brownie-config.yaml
+    depends_on:
+      - geth
+
 networks:
   default:

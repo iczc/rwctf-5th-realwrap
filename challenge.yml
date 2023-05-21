@@ -1,0 +1,8 @@
+contract: Factory
+
+description: |
+  WETH on Ethereum is too cumbersome! I'll show you what is real Wrapped ETH by utilizing precompiled contract, it works like a charm especially when exchanging ETH in a swap pair. And most important, IT IS VERY SECURE!
+
+constructor:
+  value: 1000000000000000000 # 1 ether
+  gas: 6000000
